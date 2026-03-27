@@ -24,7 +24,7 @@ uint32_t lastPulseMillis = 0;
 // =====================================================
 // ISR – Interruption capteur Hall
 // =====================================================
-void IRAM_ATTR hallSensorISR() {
+void IRAM_ATTR hallSensorISR() {  // ISR pour pickup inductif
     const uint32_t now      = micros();
     const uint32_t interval = now - lastPulseTime_us;
 
@@ -41,8 +41,9 @@ void IRAM_ATTR hallSensorISR() {
 // =====================================================
 static inline uint32_t calculateRPM(uint32_t interval_us) {
     if (interval_us == 0) return 0;
-    // (60 s × 1 000 000 µs) / (intervalle_µs × impulsions_par_tour)
-    return (uint32_t)(60000000UL / ((uint64_t)interval_us * PULSES_PER_REVOLUTION));
+    // 4 temps : 1 étincelle toutes les 2 révolutions
+    // RPM = (60 000 000 µs × CYCLES_PAR_IMPULSION) / intervalle_µs
+    return (uint32_t)((60000000ULL * CYCLES_PAR_IMPULSION) / interval_us);
 }
 
 // =====================================================
@@ -190,16 +191,16 @@ void setup() {
     sprite.createSprite(SCREEN_W, SCREEN_H);
     sprite.setColorDepth(16);
 
-    // --- Capteur Hall ---
-    pinMode(HALL_SENSOR_PIN, INPUT_PULLUP);
+    // --- Capteur inductif (bobine autour fil de bougie) ---
+    pinMode(PICKUP_PIN, INPUT);   // pas de pull-up interne : R2 externe fait le pull-down
     attachInterrupt(
-        digitalPinToInterrupt(HALL_SENSOR_PIN),
+        digitalPinToInterrupt(PICKUP_PIN),
         hallSensorISR,
-        HALL_SENSOR_EDGE
+        PICKUP_EDGE
     );
 
-    Serial.printf("Capteur Hall  : GPIO %d\n", HALL_SENSOR_PIN);
-    Serial.printf("Impulsions/tr : %d\n",      PULSES_PER_REVOLUTION);
+    Serial.printf("Pickup inductif : GPIO %d\n", PICKUP_PIN);
+    Serial.printf("Cycles/impulsion: %d (4 temps)\n", CYCLES_PAR_IMPULSION);
     Serial.println("Pret.");
 
     updateDisplay();
