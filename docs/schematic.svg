@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="760" height="490" xmlns="http://www.w3.org/2000/svg"
+     font-family="Arial, sans-serif" font-size="11">
+
+  <!-- Fond -->
+  <rect width="760" height="490" fill="#fefefe" stroke="#555" stroke-width="1.5" rx="6"/>
+
+  <!-- Titre -->
+  <text x="380" y="23" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">
+    Schéma — Pickup inductif · Tachymètre Tracteur Tondeuse B&amp;S 217707
+  </text>
+  <line x1="15" y1="31" x2="745" y2="31" stroke="#ccc" stroke-width="0.8"/>
+
+  <!-- ================================================================ -->
+  <!-- CÂBLE HAUTE TENSION (fil de bougie)                              -->
+  <!-- ================================================================ -->
+  <!-- Gaine orange -->
+  <line x1="72" y1="50" x2="72" y2="410" stroke="#FF6000" stroke-width="12" stroke-linecap="round"/>
+  <!-- Âme conducteur -->
+  <line x1="72" y1="50" x2="72" y2="410" stroke="#222" stroke-width="3"/>
+  <!-- Flèche direction bougie -->
+  <polygon points="72,48 66,62 78,62" fill="#FF6000"/>
+  <text x="72" y="44" text-anchor="middle" font-size="8" fill="#FF6000" font-weight="bold">BOBINE</text>
+  <polygon points="72,412 66,398 78,398" fill="#FF6000"/>
+  <text x="72" y="425" text-anchor="middle" font-size="8" fill="#FF6000" font-weight="bold">BOUGIE</text>
+  <!-- Label vertical -->
+  <text x="36" y="240" text-anchor="middle" font-size="9" fill="#FF6000"
+        transform="rotate(-90,36,240)">CÂBLE HAUTE TENSION (HT)</text>
+
+  <!-- ================================================================ -->
+  <!-- BOBINE PICKUP (enroulée autour du câble HT)                     -->
+  <!-- ================================================================ -->
+  <!-- Accolade indiquant les spires -->
+  <path d="M 84 163 Q 96 163 96 173 L 96 227 Q 96 237 84 237"
+        fill="none" stroke="#1A44CC" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="98" y="195" font-size="8" fill="#1A44CC">20–30</text>
+  <text x="98" y="206" font-size="8" fill="#1A44CC">spires</text>
+
+  <!-- Bobine (inductance) : rectangle + arcs internes -->
+  <rect x="112" y="155" width="50" height="90" fill="#EEF3FF" stroke="#1A44CC" stroke-width="1.8" rx="3"/>
+  <!-- Arcs symbolisant les spires à l'intérieur du rectangle -->
+  <path d="M 125 168 C 137 155, 149 168, 137 175 C 125 182, 137 195, 149 182 C 137 189, 125 202, 137 209 C 149 196, 149 222, 137 222 C 125 222, 125 209, 125 202"
+        fill="none" stroke="#1A44CC" stroke-width="1.3"/>
+  <text x="137" y="253" text-anchor="middle" font-size="9" fill="#1A44CC" font-weight="bold">BOBINE</text>
+
+  <!-- Terminal A de la bobine (haut) → signal -->
+  <line x1="162" y1="170" x2="220" y2="170" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Terminal B de la bobine (bas) → GND -->
+  <line x1="162" y1="235" x2="195" y2="235" stroke="#333" stroke-width="1.5"/>
+  <line x1="195" y1="235" x2="195" y2="310" stroke="#333" stroke-width="1.5"/>
+  <line x1="183" y1="310" x2="207" y2="310" stroke="#333" stroke-width="2.2"/>
+  <line x1="187" y1="317" x2="203" y2="317" stroke="#333" stroke-width="1.7"/>
+  <line x1="191" y1="324" x2="199" y2="324" stroke="#333" stroke-width="1.2"/>
+  <text x="195" y="338" text-anchor="middle" font-size="9" fill="#555">GND</text>
+
+  <!-- ================================================================ -->
+  <!-- R1 — Résistance d'amortissement (en parallèle sur la bobine)    -->
+  <!-- ================================================================ -->
+  <!-- Nœud A -->
+  <circle cx="220" cy="170" r="3.5" fill="#333"/>
+  <!-- Fil vertical vers R1 -->
+  <line x1="220" y1="170" x2="220" y2="190" stroke="#333" stroke-width="1.5"/>
+  <!-- Résistance (style IEC, rectangle) -->
+  <rect x="209" y="190" width="22" height="45" fill="white" stroke="#333" stroke-width="1.5"/>
+  <!-- Fil R1 vers nœud B -->
+  <line x1="220" y1="235" x2="220" y2="255" stroke="#333" stroke-width="1.5"/>
+  <line x1="220" y1="255" x2="195" y2="255" stroke="#333" stroke-width="1.5"/>
+  <line x1="195" y1="255" x2="195" y2="235" stroke="#333" stroke-width="1.5"/>
+  <!-- Label R1 -->
+  <text x="241" y="208" font-size="9" fill="#333" font-weight="bold">R1</text>
+  <text x="241" y="219" font-size="9" fill="#555">10 kΩ</text>
+  <text x="241" y="230" font-size="8" fill="#999">(amort.)</text>
+
+  <!-- ================================================================ -->
+  <!-- D1 — Diode 1N4148 (redressement)                               -->
+  <!-- ================================================================ -->
+  <!-- Fil anode (depuis nœud A) -->
+  <line x1="220" y1="170" x2="270" y2="170" stroke="#333" stroke-width="1.5"/>
+  <!-- Triangle diode (anode gauche → cathode droite) -->
+  <polygon points="270,158 270,182 302,170" fill="#333" stroke="#333" stroke-width="1"/>
+  <!-- Barre cathode -->
+  <line x1="302" y1="157" x2="302" y2="183" stroke="#333" stroke-width="2.5"/>
+  <!-- Fil cathode -->
+  <line x1="302" y1="170" x2="360" y2="170" stroke="#333" stroke-width="1.5"/>
+  <!-- Labels D1 -->
+  <text x="284" y="150" text-anchor="middle" font-size="9" fill="#333" font-weight="bold">D1</text>
+  <text x="284" y="140" text-anchor="middle" font-size="9" fill="#555">1N4148</text>
+
+  <!-- ================================================================ -->
+  <!-- RAIL DE SIGNAL (après D1)                                       -->
+  <!-- ================================================================ -->
+  <circle cx="360" cy="170" r="3.5" fill="#333"/>
+  <!-- Ligne signal principale (jusqu'à l'ESP32) -->
+  <line x1="360" y1="170" x2="650" y2="170" stroke="#333" stroke-width="1.5"/>
+  <!-- Label signal -->
+  <text x="500" y="160" text-anchor="middle" font-size="8" fill="#777">Signal conditionné →</text>
+
+  <!-- ================================================================ -->
+  <!-- R2 — Pull-down (10 kΩ vers GND)                               -->
+  <!-- ================================================================ -->
+  <circle cx="420" cy="170" r="3.5" fill="#333"/>
+  <line x1="420" y1="170" x2="420" y2="195" stroke="#333" stroke-width="1.5"/>
+  <rect x="409" y="195" width="22" height="45" fill="white" stroke="#333" stroke-width="1.5"/>
+  <line x1="420" y1="240" x2="420" y2="310" stroke="#333" stroke-width="1.5"/>
+  <!-- GND R2 -->
+  <line x1="408" y1="310" x2="432" y2="310" stroke="#333" stroke-width="2.2"/>
+  <line x1="412" y1="317" x2="428" y2="317" stroke="#333" stroke-width="1.7"/>
+  <line x1="416" y1="324" x2="424" y2="324" stroke="#333" stroke-width="1.2"/>
+  <text x="420" y="338" text-anchor="middle" font-size="9" fill="#555">GND</text>
+  <!-- Label R2 -->
+  <text x="441" y="212" font-size="9" fill="#333" font-weight="bold">R2</text>
+  <text x="441" y="223" font-size="9" fill="#555">10 kΩ</text>
+  <text x="441" y="234" font-size="8" fill="#999">(pull-down)</text>
+
+  <!-- ================================================================ -->
+  <!-- D2 — Zener 3,3 V (écrêtage protection ESP32)                  -->
+  <!-- ================================================================ -->
+  <!-- Cathode en haut (côté signal), anode en bas (GND)              -->
+  <circle cx="520" cy="170" r="3.5" fill="#333"/>
+  <line x1="520" y1="170" x2="520" y2="193" stroke="#333" stroke-width="1.5"/>
+  <!-- Barre cathode avec crochets Zener -->
+  <line x1="507" y1="193" x2="533" y2="193" stroke="#333" stroke-width="2.5"/>
+  <line x1="507" y1="193" x2="503" y2="188" stroke="#333" stroke-width="1.8"/>
+  <line x1="533" y1="193" x2="537" y2="198" stroke="#333" stroke-width="1.8"/>
+  <!-- Triangle (base anode en bas, pointe cathode en haut) -->
+  <polygon points="507,218 533,218 520,193" fill="white" stroke="#333" stroke-width="1.5"/>
+  <!-- Fil anode vers GND -->
+  <line x1="520" y1="218" x2="520" y2="310" stroke="#333" stroke-width="1.5"/>
+  <!-- GND D2 -->
+  <line x1="508" y1="310" x2="532" y2="310" stroke="#333" stroke-width="2.2"/>
+  <line x1="512" y1="317" x2="528" y2="317" stroke="#333" stroke-width="1.7"/>
+  <line x1="516" y1="324" x2="524" y2="324" stroke="#333" stroke-width="1.2"/>
+  <text x="520" y="338" text-anchor="middle" font-size="9" fill="#555">GND</text>
+  <!-- Label D2 -->
+  <text x="544" y="197" font-size="9" fill="#333" font-weight="bold">D2</text>
+  <text x="544" y="208" font-size="9" fill="#555">Zener</text>
+  <text x="544" y="219" font-size="9" fill="#555">3,3 V</text>
+
+  <!-- ================================================================ -->
+  <!-- BROCHE GPIO 27 + ESP32 LilyGo T-Display                        -->
+  <!-- ================================================================ -->
+  <!-- Étiquette GPIO 27 -->
+  <rect x="605" y="161" width="45" height="18" fill="#FFFDE7" stroke="#AA8800" stroke-width="1.2" rx="2"/>
+  <text x="627" y="173" text-anchor="middle" font-size="9" fill="#AA8800" font-weight="bold">GPIO 27</text>
+  <!-- Fil vers boîtier ESP32 -->
+  <line x1="650" y1="170" x2="658" y2="170" stroke="#333" stroke-width="1.5"/>
+  <!-- Boîtier ESP32 LilyGo T-Display -->
+  <rect x="658" y="132" width="88" height="90" fill="#E6F0FF" stroke="#1A44CC" stroke-width="2" rx="5"/>
+  <text x="702" y="155" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A44CC">LilyGo</text>
+  <text x="702" y="169" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A44CC">T-Display</text>
+  <text x="702" y="183" text-anchor="middle" font-size="9" fill="#446688">ESP32</text>
+  <text x="702" y="197" text-anchor="middle" font-size="8" fill="#6688AA">ST7789 1.14"</text>
+  <!-- Pin GPIO sur le boîtier -->
+  <line x1="658" y1="170" x2="650" y2="170" stroke="#1A44CC" stroke-width="1.5"/>
+  <circle cx="658" cy="170" r="3" fill="#1A44CC"/>
+
+  <!-- ================================================================ -->
+  <!-- ANNOTATIONS                                                      -->
+  <!-- ================================================================ -->
+  <!-- Annotation "circuit passif" -->
+  <rect x="340" y="278" width="160" height="28" fill="#F0FFF0" stroke="#4CAF50" stroke-width="1" rx="3"/>
+  <text x="420" y="292" text-anchor="middle" font-size="9" fill="#2E7D32">✓ Circuit entièrement passif</text>
+  <text x="420" y="302" text-anchor="middle" font-size="9" fill="#2E7D32">Aucune alimentation requise</text>
+
+  <!-- ================================================================ -->
+  <!-- LÉGENDE                                                          -->
+  <!-- ================================================================ -->
+  <rect x="15" y="355" width="730" height="122" fill="#F8F8F8" stroke="#DDD" stroke-width="1" rx="4"/>
+
+  <text x="25" y="372" font-size="10" font-weight="bold" fill="#222">Notes de câblage :</text>
+
+  <text x="25" y="388" font-size="9.5" fill="#333">① Enrouler 20 à 30 spires serrées de fil fin (Ø 0,2–0,5 mm émaillé ou isolé) autour du câble HT reliant la bobine à la bougie.</text>
+  <text x="25" y="403" font-size="9.5" fill="#333">② R1 (10 kΩ) : résistance d'amortissement en parallèle sur la bobine — évite les oscillations parasites.</text>
+  <text x="25" y="418" font-size="9.5" fill="#333">③ D1 (1N4148) : ne laisse passer que le pic positif induit (inverse le signal si le pic est négatif → inverser la bobine).</text>
+  <text x="25" y="433" font-size="9.5" fill="#333">④ R2 (10 kΩ) : maintient GPIO 27 au niveau bas au repos.  D2 (Zener 3,3 V) : protège l'ESP32 — INDISPENSABLE (pic peut dépasser 5 V).</text>
+  <text x="25" y="448" font-size="9.5" fill="#333">⑤ Si les RPM affichés sont deux fois trop bas → passer CYCLES_PAR_IMPULSION à 1 dans config.h (certains B&amp;S ont une allumage "wasted spark").</text>
+  <text x="25" y="463" font-size="8.5" fill="#888">Coût total composants : ≈ 0,20 €  |  D1 1N4148 · D2 BZX55C3V3 (ou 1N4728) · 2× résistance 10 kΩ — disponibles en kit Arduino / Gotronic / Conrad.</text>
+</svg>
